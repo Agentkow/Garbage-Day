@@ -1278,7 +1278,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'Materials:
+
+    Concrete - Nobiax / Yughues
+
+
+    Models
+
+    Trash can - Ozgur Saral
+
+    Garbage Bag - BiSkiT'
 --- !u!222 &1375401841
 CanvasRenderer:
   m_ObjectHideFlags: 0

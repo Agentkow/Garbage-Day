@@ -53,7 +53,12 @@ public class Movement : MonoBehaviour
         Move();
         Turn();
     }
+    private void Move()
+    {
+        Vector3 movement = transform.forward * movementInput * speed * Time.deltaTime;
 
+        rigBody.MovePosition(rigBody.position + movement);
+    }
     private void Turn()
     {
         float turn = turnInput * turnSpeed * Time.deltaTime;
@@ -61,9 +66,5 @@ public class Movement : MonoBehaviour
         rigBody.MoveRotation(rigBody.rotation * turnRotate);
     }
 
-    private void Move()
-    {
-        Vector3 movement = transform.forward * movementInput * speed * Time.deltaTime;
-        rigBody.MovePosition(rigBody.position + movement);
-    }
+    
 }
