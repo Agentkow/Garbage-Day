@@ -8,7 +8,7 @@ public class Shoot : MonoBehaviour {
     public Transform fireTransform;
 
     public float force = 5.95f;
-    public int coolDown = 1;
+    public float coolDown = 0.1f;
 
     private string fireButton;
     private float currentForce;
@@ -46,6 +46,7 @@ public class Shoot : MonoBehaviour {
        
     }
 
+    //launch trashcan
     private void Fire()
     {
         fired = false;
@@ -55,6 +56,7 @@ public class Shoot : MonoBehaviour {
         
     }
 
+    //cooldown
     private IEnumerator CoolDown()
     {
         canFire = false;
