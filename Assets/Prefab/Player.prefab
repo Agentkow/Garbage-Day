@@ -70,13 +70,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1469356949112884}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.483, z: 0.235}
+  m_LocalRotation: {x: -0.28627002, y: -0, z: -0, w: 0.9581491}
+  m_LocalPosition: {x: 0, y: 0.594, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4733828813321938}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -33.27, y: 0, z: 0}
 --- !u!4 &4733828813321938
 Transform:
   m_ObjectHideFlags: 1
@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793512693205412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.0100002, y: 1.741, z: -2.04}
+  m_LocalPosition: {x: -2.103942, y: 1.1859102, z: -3.0799153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4736537387933394}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 1
   speed: 2
-  turnSpeed: 180
+  turnSpeed: 120
 --- !u!114 &114535065264287836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,8 +218,8 @@ MonoBehaviour:
   playerNum: 1
   bag: {fileID: 54739327201455162, guid: 89a060bf1d953f64fa26443424af6844, type: 2}
   fireTransform: {fileID: 4632921307552120}
-  force: 0.01
-  coolDown: 3
+  force: 5.17
+  coolDown: 0.5
 --- !u!114 &114580362946445134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,3 +231,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18941fd6a164e8447b4987f83968b765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}

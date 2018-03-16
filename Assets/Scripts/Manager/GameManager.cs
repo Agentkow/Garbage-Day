@@ -6,14 +6,37 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject playerPrefab;
-    public GameObject leftLawn;
-    public GameObject rightLawn;
-    public TrashManager[] trashCans;
-    public Text leftText;
-    public Text rightText;
-    public float timer = 120f;
+    [SerializeField]
+    private GameObject playerPrefab;
 
+    [SerializeField]
+    private GameObject leftLawn;
+
+    [SerializeField]
+    private GameObject rightLawn;
+
+    [SerializeField]
+    private TrashManager[] trashCans;
+
+    [SerializeField]
+    private Text leftText;
+
+    [SerializeField]
+    private Text rightText;
+
+    [SerializeField]
+    private Text timerText;
+
+    [SerializeField]
+    private float timer = 120f;
+
+    [SerializeField]
+    private Text winMessageText;
+
+    [SerializeField]
+    private float returnMainMenuDelay = 1f;
+
+    private bool gameHasEnded = false;
     private BagCounter leftPlayer;
     private BagCounter rightPlayer;
     private int leftCount;
@@ -21,42 +44,88 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
-        leftLawn = GameObject.Find("HomeL");
-        rightLawn = GameObject.Find("HomeR");
+        
         leftPlayer = leftLawn.GetComponent<BagCounter>();
         rightPlayer = rightLawn.GetComponent<BagCounter>();
     }
 
     private void Start()
     {
+        winMessageText.text = "";
         SpawnCans();
-        StartCoroutine(TimerCountdown());
+
     }
 
     private void SpawnCans()
     {
         for (int i = 0; i < trashCans.Length; i++)
         {
-            trashCans[i].instance = Instantiate(playerPrefab, trashCans[i].spawnPoint.position, trashCans[i].spawnPoint.rotation) as GameObject;
-            trashCans[i].playerNum = i + 1;
+            trashCans[i].instance = Instantiate(playerPrefab, trashCans[i].spawnPoint.position, trashCans[i].spawnPoint.rotation);
+            trashCans[i].playerNum = i+1;
             trashCans[i].Setup();
         }
 
-        
     }
 
     private void FixedUpdate()
     {
+
+        float minutes = Mathf.Floor(timer / 60);
+        float seconds = Mathf.RoundToInt(timer % 60);
+
         leftCount = leftPlayer.bagCount;
         rightCount = rightPlayer.bagCount;
 
         leftText.text = "Bags: " + leftCount;
         rightText.text = "Bags: " + rightCount;
+
+        
+        if (!gameHasEnded)
+        {
+            timerText.text = minutes + ":" + seconds;
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                EndGame();
+            }
+        }
+        
+        
     }
 
-    private IEnumerator TimerCountdown()
+    private void EndGame()
     {
+        gameHasEnded = true;
+        for (int i = 0; i < trashCans.Length; i++)
+        {
+            trashCans[i].DisableControl();
+        }
 
-        yield return new WaitForSeconds(timer);
+        winMessageText.text = GetWinMessage();
+        timerText.text = "";
+        StartCoroutine(ReturnToMainMenuAfterDelay());
+    }
+
+    private string GetWinMessage()
+    {
+        if (leftCount < rightCount)
+        {
+            return "Player 1 Wins!";
+        }
+        else if (leftCount > rightCount)
+        {
+            return "Player 2 Wins!";
+        }
+        else
+        {
+            return "Draw!";
+        }
+    }
+
+   
+    private IEnumerator ReturnToMainMenuAfterDelay()
+    {
+        yield return new WaitForSeconds(returnMainMenuDelay);
+        SceneManager.LoadScene("Main Menu");
     }
 }

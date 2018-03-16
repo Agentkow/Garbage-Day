@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 {
     public int playerNum = 1;
     public float speed = 12f;
-    public float turnSpeed = 180f;
+    public float turnSpeed = 90f;
 
     private string movementAxis;
     private string turnAxis;

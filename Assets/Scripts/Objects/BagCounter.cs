@@ -8,11 +8,19 @@ public class BagCounter : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        bagCount++;
+        if (other.gameObject.tag == "Bag")
+        {
+            bagCount++;
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        bagCount--;  
+        if (other.gameObject.tag == "Bag")
+        {
+            bagCount--;
+        }
+         
     }
 }

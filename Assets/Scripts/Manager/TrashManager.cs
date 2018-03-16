@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-[SerializeField]
+[Serializable]
 public class TrashManager
 {
     public Transform spawnPoint;
@@ -12,17 +13,18 @@ public class TrashManager
 
     private Movement movement;
     private Shoot shooting;
+    private Respawn respawn;
 
 
     public void Setup()
     {
         movement = instance.GetComponent<Movement>();
         shooting = instance.GetComponent<Shoot>();
-
-        movement.playerNum = playerNum;
-
+        respawn = instance.GetComponent<Respawn>();
+        
         movement.playerNum = playerNum;
         shooting.playerNum = playerNum;
+        respawn.spawnPoint = spawnPoint;
 
     }
 

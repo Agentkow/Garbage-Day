@@ -11,37 +11,30 @@ public class Shoot : MonoBehaviour {
     public float coolDown = 0.1f;
 
     private string fireButton;
-    private float currentForce;
     private float chargeSpeed;
-    private bool fired;
     private bool canFire;
 
-    private void OnEnable()
-    {
-        currentForce = force;
-    }
-    
+   
     void Start ()
     {
         fireButton = "Fire" + playerNum;
         canFire = true;
 
 	}
-	
-	void Update ()
+
+    
+    void FixedUpdate ()
     {
        
         if (canFire)
         {
-            if (Input.GetButtonDown(fireButton))
+            if (Input.GetButton(fireButton))
             {
+                Debug.Log("fired");
                 Fire();
                 StartCoroutine(CoolDown());
             }
-            else
-            {
-                fired = false;
-            }
+            
         }
        
     }
@@ -49,9 +42,8 @@ public class Shoot : MonoBehaviour {
     //launch trashcan
     private void Fire()
     {
-        fired = false;
         Rigidbody instance = Instantiate(bag, fireTransform.position, fireTransform.rotation);
-
+        
         instance.velocity = force * fireTransform.forward;
         
     }

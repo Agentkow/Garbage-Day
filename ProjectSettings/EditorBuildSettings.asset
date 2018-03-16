@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 8655b55d86110f54498f86cf593ded2d
   - enabled: 1
+    path: Assets/Scenes/Join Screen.unity
+    guid: 73a2dbf1569c84948a5c329c2df7ca75
+  - enabled: 1
     path: Assets/Scenes/Level.unity
     guid: 16c3bb5394d0f9549bdea0911b433ef8
