@@ -110,11 +110,25 @@ public class GameManager : MonoBehaviour {
     {
         if (leftCount < rightCount)
         {
-            return "Player 1 Wins!";
+            if (leftCount == 0)
+            {
+                return "Player 1 Wins Clean Lee Award!";
+            }
+            else
+            {
+                return "Player 1 Wins!";
+            }
         }
         else if (leftCount > rightCount)
         {
-            return "Player 2 Wins!";
+            if (rightCount == 0)
+            {
+                return "Player 2 Wins Clean Lee Award!";
+            }
+            else
+            {
+                return "Player 2 Wins!";
+            }
         }
         else
         {
